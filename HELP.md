@@ -1,24 +1,28 @@
-# Getting Started
+# MediscreenNoteApi
 
-### Reference Documentation
-For further reference, please consider the following sections:
+An API with 1 entity, the note, to save patient medical records. 
+You will be able to get all notes, to get all patient notes by patientId, to create a new note, to update or delete a note, or to delete all notes for a patient.
 
-* [Official Gradle documentation](https://docs.gradle.org)
-* [Spring Boot Gradle Plugin Reference Guide](https://docs.spring.io/spring-boot/docs/2.6.3/gradle-plugin/reference/html/)
-* [Create an OCI image](https://docs.spring.io/spring-boot/docs/2.6.3/gradle-plugin/reference/html/#build-image)
-* [Spring Data MongoDB](https://docs.spring.io/spring-boot/docs/2.6.3/reference/htmlsingle/#boot-features-mongodb)
-* [Spring Web](https://docs.spring.io/spring-boot/docs/2.6.3/reference/htmlsingle/#boot-features-developing-web-applications)
+All is saved on noSql solution MongoDB and packed in Docker.
 
-### Guides
-The following guides illustrate how to use some features concretely:
+API exposed port : 8082
 
-* [Accessing Data with MongoDB](https://spring.io/guides/gs/accessing-data-mongodb/)
-* [Building a RESTful Web Service](https://spring.io/guides/gs/rest-service/)
-* [Serving Web Content with Spring MVC](https://spring.io/guides/gs/serving-web-content/)
-* [Building REST services with Spring](https://spring.io/guides/tutorials/bookmarks/)
 
-### Additional Links
-These additional references should also help you:
+##### Prerequisites
+- Java 11
+- SpringBoot 2.5.5
+- MongoDB 
+- Docker
 
-* [Gradle Build Scans – insights for your project's build](https://scans.gradle.com#gradle)
 
+##### Running App
+Please download : 
+https://github.com/RichardPennarun/mediscreenNoteAPI/archive/refs/heads/main.zip
+
+Open a terminal window, go to the root folder and run this 2 lines in this order :
+- docker build -t mediscreennoteapi .
+- docker-compose up -d
+
+
+##### Testing
+The app has a Jacoco test coverage of 93 %

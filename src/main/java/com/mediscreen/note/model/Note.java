@@ -1,6 +1,7 @@
 package com.mediscreen.note.model;
 
-import org.bson.types.ObjectId;
+import java.util.Date;
+
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -9,22 +10,24 @@ import org.springframework.data.mongodb.core.mapping.Field;
 public class Note {
 
 	@Indexed(unique = true)
-	@Field(value = "_id")
 	private String id;
-	
+
+	@Field(value = "creation_date")
+	private Date date;
+
 	@Field(value = "patient_id")
 	private int patientId;
-	
-	private String recommandation;
-	
+
+	private String recommendation;
+
 	public Note() {
-		
 	}
-	
-	public Note(String id, int patientId, String recommandation) {
+
+	public Note(String id, Date date, int patientId, String recommendation) {
 		this.id = id;
+		this.date = date;
 		this.patientId = patientId;
-		this.recommandation = recommandation;
+		this.recommendation = recommendation;
 	}
 
 	public String getId() {
@@ -35,6 +38,14 @@ public class Note {
 		this.id = id;
 	}
 
+	public Date getDate() {
+		return date;
+	}
+
+	public void setDate(Date date) {
+		this.date = date;
+	}
+
 	public int getPatientId() {
 		return patientId;
 	}
@@ -43,15 +54,12 @@ public class Note {
 		this.patientId = patientId;
 	}
 
-	public String getRecommandation() {
-		return recommandation;
+	public String getRecommendation() {
+		return recommendation;
 	}
 
-	public void setRecommandation(String recommandation) {
-		this.recommandation = recommandation;
+	public void setRecommendation(String recommendation) {
+		this.recommendation = recommendation;
 	}
 
-	
-	
-	
 }

@@ -2,9 +2,7 @@ package com.mediscreen.note.controller;
 
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.mongodb.repository.DeleteQuery;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,8 +19,6 @@ public class NoteController {
 	@Autowired
 	private NoteServiceImpl noteServiceImpl;
 
-	
-
 	/**
 	 * Read - Get a Note
 	 * 
@@ -38,7 +34,7 @@ public class NoteController {
 			return null;
 		}
 	}
-	
+
 	/**
 	 * Read - Get all notes
 	 * 
@@ -63,7 +59,7 @@ public class NoteController {
 	/**
 	 * Read - Get all notes for a given patient
 	 * 
-	 * @param id The id of the patient
+	 * @param patientId an int
 	 * @return An Note object full filled
 	 */
 	@GetMapping("/notes/{patientId}")
@@ -72,10 +68,8 @@ public class NoteController {
 		return notes;
 	}
 
-
-
 	/**
-	 * Delete - Delete a Patient
+	 * Delete - Delete a Note
 	 * 
 	 * @param id a String
 	 * @return void
@@ -84,7 +78,16 @@ public class NoteController {
 	public void deleteNote(@PathVariable("id") final String id) {
 		noteServiceImpl.deleteNote(id);
 	}
-	
-	
-	
+
+	/**
+	 * Delete - Delete all Patient's notes
+	 * 
+	 * @param patientId an int
+	 * @return void
+	 */
+	@DeleteMapping("/notes/{patientId}")
+	public void deleteNotes(@PathVariable("patientId") final int patientId) {
+		noteServiceImpl.deleteNotes(patientId);
+	}
+
 }

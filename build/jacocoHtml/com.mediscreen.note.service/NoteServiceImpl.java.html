@@ -2,7 +2,6 @@
 
 import java.util.Optional;
 
-import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -10,32 +9,42 @@ import com.mediscreen.note.model.Note;
 import com.mediscreen.note.repository.NoteRepository;
 
 @Service
-<span class="fc" id="L13">public class NoteServiceImpl {</span>
+<span class="fc" id="L12">public class NoteServiceImpl {</span>
 
+	@Autowired
+	private NoteRepository noteRepository;
 
-    @Autowired
-    private NoteRepository noteRepository;
+	// Get note by its id
+	public Optional&lt;Note&gt; getNote(String id) {
+<span class="fc" id="L19">		return noteRepository.findById(id);</span>
+	}
 
-    public Optional&lt;Note&gt; getNote(String id) {
-<span class="fc" id="L20">        return noteRepository.findById(id);</span>
-    }
+	// Get all notes
+	public Iterable&lt;Note&gt; getNotes() {
+<span class="fc" id="L24">		return noteRepository.findAll();</span>
+	}
 
-    public Iterable&lt;Note&gt; getNotes() {
-<span class="fc" id="L24">        return noteRepository.findAll();</span>
-    }
+	// Save note
+	public Note saveNote(Note note) {
+<span class="fc" id="L29">		Note savedNote = noteRepository.save(note);</span>
+<span class="fc" id="L30">		return savedNote;</span>
+	}
 
-    public Note saveNote(Note note) {
-<span class="fc" id="L28">    	Note savedNote = noteRepository.save(note);</span>
-<span class="fc" id="L29">        return savedNote;</span>
-    }
+	// Get all notes for a given patient
+	public Iterable&lt;Note&gt; getPatientNotes(int patientId) {
+<span class="fc" id="L35">		return noteRepository.findAllByPatientId(patientId);</span>
+	}
 
-    public Iterable&lt;Note&gt; getPatientNotes(int patientId) {
-<span class="fc" id="L33">        return noteRepository.findAllByPatientId(patientId);</span>
-    }
-	
-    public void deleteNote(String id) {
-<span class="fc" id="L37">    	noteRepository.deleteNoteById(id);</span>
-<span class="fc" id="L38">    }</span>
+	// Delete note by id
+	public void deleteNote(String id) {
+<span class="fc" id="L40">		noteRepository.deleteNoteById(id);</span>
+<span class="fc" id="L41">	}</span>
+
+	// Delete notes by patientI
+	public void deleteNotes(int patientId) {
+<span class="fc" id="L45">		noteRepository.deleteAllByPatientId(patientId);</span>
+
+<span class="fc" id="L47">	}</span>
 
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

@@ -1,9 +1,6 @@
 package com.mediscreen.note.service;
 
-import java.util.List;
 import java.util.Optional;
-
-import org.bson.types.ObjectId;
 
 import com.mediscreen.note.model.Note;
 
@@ -18,5 +15,7 @@ public interface NoteService {
     Iterable<Note> getPatientNotes(int patientId);
     
     void deleteNote(final String id);
+    
+    void deleteNotes(final int patientId);
 
 }
