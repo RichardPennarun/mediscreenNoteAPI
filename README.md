@@ -22,6 +22,7 @@ https://github.com/RichardPennarun/mediscreenNoteAPI/archive/refs/heads/main.zip
 Open a terminal window, go to the root folder and run this 2 lines in this order :
 - docker build -t mediscreennoteapi .
 - docker-compose up -d
+Data are provided in it.
 
 
 ##### Testing
